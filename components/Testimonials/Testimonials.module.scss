@@ -1,0 +1,151 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  padding-block: 64px;
+  background: $navy;
+  color: $white;
+
+  @include from($lg) {
+    padding-block: 96px;
+  }
+}
+
+.inner {
+  @include container;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include from($md) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @include from($xl) {
+    width: calc(100% + 50px);
+  }
+}
+
+.title {
+  @include heading-xxl;
+  max-width: 716px;
+}
+
+.controls {
+  display: flex;
+  flex-shrink: 0;
+  align-self: flex-end;
+  gap: 28px;
+
+  @include from($md) {
+    align-self: auto;
+  }
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: $white;
+  color: $navy;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+
+  svg {
+    width: 28px;
+    height: 28px;
+    stroke-width: 2.5;
+  }
+
+  @include hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+  }
+
+  &:active {
+    transform: scale(0.94);
+  }
+
+  @include from($md) {
+    width: 72px;
+    height: 72px;
+
+    svg {
+      width: 36px;
+      height: 36px;
+    }
+  }
+}
+
+.flip {
+  transform: scaleX(-1);
+}
+
+.track {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  margin-top: 48px;
+  overflow: hidden;
+
+  @include from($lg) {
+    margin-top: 72px;
+  }
+}
+
+.card {
+  flex: 0 0 100%;
+  padding: 40px;
+  border-radius: 12px;
+  background: $white;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  color: $black;
+
+  @include from($md) {
+    flex-basis: calc((100% - 22px) / 2);
+  }
+
+  @include from($lg) {
+    flex-basis: 350px;
+  }
+}
+
+.quote {
+  @include text-m;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+  color: $navy;
+}
+
+.avatar {
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.name {
+  display: block;
+  font-weight: 700;
+  line-height: 22px;
+}
+
+.role {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 24px;
+}

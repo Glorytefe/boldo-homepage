@@ -1,0 +1,74 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.services {
+  @include container;
+  padding-top: 80px;
+
+  @include from($lg) {
+    padding-top: 82px;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 56px;
+  margin-top: 56px;
+
+  @include from($md) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  @include from($lg) {
+    gap: 100px;
+    margin-top: 78px;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+}
+
+.title {
+  margin-top: 24px;
+  @include text-m;
+  font-weight: 400;
+}
+
+.description {
+  margin-top: 12px;
+  @include text-s;
+  color: $grey;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  align-self: flex-start;
+  margin-top: 28px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid $navy;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 36px;
+  color: $navy;
+
+  svg {
+    transition: transform 0.15s ease;
+  }
+
+  @include hover {
+    svg {
+      transform: translateX(4px);
+    }
+  }
+}

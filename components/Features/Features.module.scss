@@ -1,0 +1,174 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.features {
+  @include container;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding-block: 80px;
+
+  @include from($lg) {
+    gap: 120px;
+    padding-block: 185px 120px;
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+
+  @include from($lg) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.photoFirst {
+  @include from($xl) {
+    justify-content: flex-start;
+    gap: 150px;
+
+    .text {
+      flex-shrink: 0;
+      width: 493px;
+    }
+  }
+}
+
+.media {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 494px;
+  padding-bottom: 104px;
+}
+
+.mediaNarrow {
+  max-width: 444px;
+  padding-bottom: 169px;
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+}
+
+.statCard {
+  position: absolute;
+  bottom: 0;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  background: $white;
+  box-shadow: $shadow-card;
+}
+
+.statCardBars {
+  width: 251px;
+  padding: 40px;
+
+  @include from($lg) {
+    right: auto;
+    left: 186px;
+  }
+}
+
+.statCardPie {
+  width: 291px;
+  padding: 48px 32px 40px 56px;
+
+  @include from($lg) {
+    right: auto;
+    left: 48px;
+  }
+}
+
+.barChart {
+  width: 170px;
+  margin-bottom: 20px;
+}
+
+.statValue {
+  font-family: $font-heading;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 36px;
+  color: $navy;
+}
+
+.statLabel {
+  margin-top: 4px;
+  font-family: $font-heading;
+  font-size: 14px;
+  line-height: 24px;
+  color: $navy;
+}
+
+.donutChart {
+  width: 173px;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 23px;
+  font-family: $font-heading;
+  font-size: 14px;
+  line-height: 24px;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+  }
+}
+
+.text {
+  width: 100%;
+  max-width: 500px;
+}
+
+.heading {
+  @include heading-xl;
+}
+
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 40px;
+  @include text-s;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 27px;
+  }
+}
+
+.check {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: $navy;
+  color: $white;
+}
+
+.cta {
+  margin-top: 56px;
+}
