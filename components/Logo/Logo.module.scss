@@ -1,0 +1,15 @@
+@use '../../styles/variables' as *;
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  font-family: $font-heading;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.mark {
+  width: auto;
+  height: 0.78em;
+}
