@@ -1,0 +1,73 @@
+@use 'variables' as *;
+
+@mixin from($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin container($max: $container) {
+  width: 100%;
+  max-width: $max + 2 * $gutter;
+  margin-inline: auto;
+  padding-inline: $gutter;
+}
+
+@mixin heading-xxl {
+  font-family: $font-heading;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.5;
+
+  @include from($md) {
+    font-size: 48px;
+    line-height: 72px;
+  }
+}
+
+@mixin heading-xl {
+  font-family: $font-heading;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.55;
+
+  @include from($md) {
+    font-size: 36px;
+    line-height: 56px;
+  }
+}
+
+// Paragraph styles from the Figma file (Text M / S / XS).
+@mixin text-m {
+  font-size: 24px;
+  line-height: 36px;
+}
+
+@mixin text-s {
+  font-size: 20px;
+  line-height: 32px;
+}
+
+@mixin text-xs {
+  font-size: 16px;
+  line-height: 28px;
+}
+
+@mixin decor-circle {
+  content: '';
+  position: absolute;
+  width: 1293px;
+  height: 1293px;
+  border-radius: 50%;
+  background: $navy-light;
+  pointer-events: none;
+}
+
+// Skips touch screens, where a tap would leave the hover style stuck on.
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}

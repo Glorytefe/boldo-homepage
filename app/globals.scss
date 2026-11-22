@@ -1,0 +1,124 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// Only visible when the page is pulled past either end: navy by the hero, white by the footer.
+html {
+  scroll-behavior: smooth;
+  background-color: $navy;
+  animation: overscroll-background linear both;
+  animation-timeline: scroll(root);
+}
+
+@keyframes overscroll-background {
+  0%,
+  50% {
+    background-color: $navy;
+  }
+  50.01%,
+  100% {
+    background-color: $white;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: $font-body;
+  @include text-xs;
+  color: $black;
+  background: $white;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+figure,
+blockquote {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+// Mobile browsers draw a rectangle over tapped elements, ignoring their shape.
+a,
+button,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid $blue;
+  outline-offset: 3px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  // Excludes <html>, whose scroll-driven background a forced duration would break.
+  body,
+  body *,
+  body *::before,
+  body *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 100;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: $white;
+  color: $navy;
+  font-weight: 700;
+  transform: translateY(-200%);
+
+  &:focus {
+    transform: none;
+  }
+}
