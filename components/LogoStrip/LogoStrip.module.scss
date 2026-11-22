@@ -1,0 +1,63 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+$strip-width: 1173px;
+$logo-gap: 56px;
+
+.strip {
+  @include container($strip-width);
+  position: relative;
+  margin-top: 56px;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      $navy 0%,
+      rgba($navy, 0.11) 32%,
+      rgba($navy, 0) 74%,
+      $navy 100%
+    );
+    pointer-events: none;
+  }
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+
+  .strip:hover & {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+.logos {
+  display: flex;
+  align-items: center;
+  gap: $logo-gap;
+  // Trailing gap so the seam between the two copies looks like any other gap.
+  padding: 26px $logo-gap 29px 0;
+
+  li {
+    flex-shrink: 0;
+  }
+}
+
+.boldo {
+  font-size: 36px;
+  color: $white;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}

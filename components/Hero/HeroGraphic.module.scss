@@ -1,0 +1,128 @@
+@use '../../styles/variables' as *;
+
+.graphic {
+  flex-shrink: 0;
+  grid-template-columns: 192px 262px;
+  grid-template-rows: 232px 165px;
+  gap: 26px 40px;
+  width: 494px;
+}
+
+.card {
+  position: relative;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(34px);
+}
+
+.dots {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: flex;
+  gap: 10px;
+
+  span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+
+    &:nth-child(1) {
+      background: #fc5b00;
+    }
+    &:nth-child(2) {
+      background: #ecaa00;
+    }
+    &:nth-child(3) {
+      background: #009d10;
+    }
+  }
+}
+
+.progress {
+  grid-column: 1 / -1;
+  padding: 64px 28px 0 29px;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 20px;
+}
+
+.rowLabel {
+  flex-shrink: 0;
+  width: 54px;
+  height: 12px;
+  border-radius: 14px;
+  background: $grey-blue;
+}
+
+.track {
+  flex: 1;
+
+  span {
+    display: block;
+    height: 12px;
+    border-radius: 14px;
+  }
+}
+
+.rowValue {
+  width: 34px;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.bars {
+  padding: 38px 20px 0 25px;
+}
+
+.barChart {
+  width: 140px;
+}
+
+.donut {
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 47px 28px 24px;
+}
+
+.donutBody {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.donutChart {
+  width: 93px;
+}
+
+.lines {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  span {
+    height: 8px;
+    border-radius: 14px;
+    background: $grey-blue;
+
+    &:nth-child(1) {
+      width: 72px;
+    }
+    &:nth-child(2) {
+      width: 68px;
+    }
+    &:nth-child(3) {
+      width: 76px;
+    }
+  }
+}

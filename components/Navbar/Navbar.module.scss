@@ -1,0 +1,165 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.header {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 10;
+  padding-top: 24px;
+
+  @include from($lg) {
+    padding-top: 56px;
+  }
+}
+
+.nav {
+  @include container($container-wide);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 32px;
+  color: $white;
+  transition: opacity 0.15s ease;
+
+  @include hover {
+    opacity: 0.85;
+  }
+
+  @include from($lg) {
+    font-size: 43px;
+  }
+}
+
+.toggle {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: $white;
+  cursor: pointer;
+
+  @include hover {
+    background: rgba($white, 0.1);
+  }
+
+  @include from($lg) {
+    display: none;
+  }
+}
+
+.desktopMenu {
+  display: none;
+
+  @include from($lg) {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include from($lg) {
+    flex-direction: row;
+    gap: 40px;
+  }
+}
+
+.link {
+  font-weight: 600;
+  color: $white;
+
+  @include hover {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+  }
+}
+
+.dialog {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 24px 0 40px;
+  border: 0;
+  overflow: hidden auto;
+  background: $navy;
+  color: $white;
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &::before {
+    @include decor-circle;
+    top: -789px;
+    left: calc(50% + 77px);
+  }
+
+  &::backdrop {
+    background: $navy;
+  }
+
+  &[open] {
+    display: flex;
+    flex-direction: column;
+    animation: menu-in 0.2s ease;
+  }
+
+  @include from($lg) {
+    display: none !important;
+  }
+}
+
+.dialogBar {
+  @include container($container-wide);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dialogBody {
+  @include container($container-wide);
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 48px;
+
+  .link {
+    display: block;
+    padding-block: 12px;
+    font-family: $font-heading;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .login {
+    width: 100%;
+    padding-block: 16px;
+    font-size: 20px;
+  }
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+  }
+}
