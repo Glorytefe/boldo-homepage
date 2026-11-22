@@ -1,0 +1,42 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.wrapper {
+  @include container($container-wide);
+  padding-top: 80px;
+
+  @include from($lg) {
+    padding-top: 124px;
+  }
+}
+
+.panel {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 56px 24px;
+  border-radius: 12px;
+  background: $navy;
+  color: $white;
+  text-align: center;
+
+  &::before {
+    @include decor-circle;
+    top: -1054px;
+    left: calc(50% - 134px);
+  }
+
+  @include from($lg) {
+    gap: 44px;
+    padding: 68px 72px 72px;
+  }
+}
+
+.title {
+  @include heading-xxl;
+  position: relative;
+  max-width: 716px;
+}

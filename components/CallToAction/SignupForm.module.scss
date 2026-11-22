@@ -1,0 +1,51 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.form {
+  position: relative;
+  width: 100%;
+  max-width: 604px;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include from($md) {
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+  }
+}
+
+.input {
+  min-width: 0;
+  height: 56px;
+
+  padding: 0 32px;
+  border: 2px solid $white;
+  border-radius: 240px;
+  background: $white;
+  @include text-s;
+  color: $black;
+
+  @include from($md) {
+    flex: 1;
+  }
+
+  &::placeholder {
+    color: $black;
+  }
+
+  &[aria-invalid='true'] {
+    border-color: $orange;
+  }
+}
+
+.status {
+  position: absolute;
+  top: calc(100% + 12px);
+  inset-inline: 0;
+  color: $grey-light;
+}

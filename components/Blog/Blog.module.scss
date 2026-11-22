@@ -1,0 +1,83 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  @include container($container-narrow);
+  padding-top: 80px;
+
+  @include from($lg) {
+    padding-top: 156px;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 48px;
+  margin-top: 56px;
+
+  @include from($md) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px 32px;
+  }
+
+  @include from($lg) {
+    gap: 64px 50px;
+    margin-top: 77px;
+  }
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 300 / 209;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+  color: $grey;
+}
+
+.category {
+  font-weight: 700;
+  color: $navy;
+}
+
+.title {
+  margin-top: 12px;
+  @include text-s;
+  font-weight: 400;
+
+  @include from($md) {
+    min-height: 3 * 32px;
+  }
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.more {
+  display: flex;
+  justify-content: center;
+  margin-top: 84px;
+}

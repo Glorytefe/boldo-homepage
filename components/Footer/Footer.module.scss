@@ -1,0 +1,133 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.footer {
+  padding-block: 64px;
+
+  @include from($lg) {
+    padding-block: 184px 117px;
+  }
+}
+
+.inner {
+  @include container($container-wide);
+  display: grid;
+  grid-template-areas:
+    'brand'
+    'links'
+    'copyright';
+  gap: 40px;
+
+  @include from($md) {
+    grid-template-areas:
+      'brand links'
+      'copyright links';
+    grid-template-columns: minmax(0, 300px) auto;
+    justify-content: space-between;
+    gap: 32px 48px;
+  }
+
+  @include from($lg) {
+    row-gap: 64px;
+  }
+
+  @include from($xl) {
+    grid-template-columns: 300px auto;
+    justify-content: start;
+    column-gap: 179px;
+  }
+}
+
+.brand {
+  grid-area: brand;
+}
+
+.logo {
+  font-size: 43px;
+  color: $navy;
+}
+
+.about {
+  margin-top: 24px;
+  color: $grey;
+
+  @include from($lg) {
+    margin-top: 38px;
+  }
+}
+
+.copyright {
+  grid-area: copyright;
+  align-self: start;
+  color: $grey;
+}
+
+.columns {
+  grid-area: links;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 32px 16px;
+
+  @include from($md) {
+    grid-template-columns: repeat(3, auto);
+    gap: 48px;
+  }
+
+  @include from($lg) {
+    grid-template-columns: repeat(3, 150px);
+    gap: 96px;
+  }
+}
+
+.heading {
+  @include text-s;
+  font-weight: 700;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+  @include text-s;
+  color: $grey;
+
+  @include from($lg) {
+    gap: 32px;
+    margin-top: 32px;
+  }
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 8px;
+
+    @include from($lg) {
+      flex-wrap: nowrap;
+      gap: 12px;
+    }
+  }
+
+  a {
+    transition: color 0.15s ease;
+
+    @include hover {
+      color: $navy;
+    }
+  }
+}
+
+.badge {
+  padding: 1px 10px;
+  border-radius: 120px;
+  background: $green;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 28px;
+  color: $navy;
+
+  @include from($md) {
+    padding-inline: 14px;
+  }
+}

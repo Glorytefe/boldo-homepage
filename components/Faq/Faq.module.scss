@@ -1,0 +1,107 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  @include container;
+  padding-top: 80px;
+
+  @include from($lg) {
+    padding-top: 124px;
+  }
+}
+
+.banner {
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 56px;
+
+  @include from($lg) {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 100px;
+  }
+}
+
+.title {
+  @include heading-xl;
+
+  @include from($lg) {
+    max-width: 500px;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+
+  @include from($lg) {
+    max-width: 500px;
+  }
+}
+
+.item {
+  padding-bottom: 24px;
+  border-bottom: 1px solid $border;
+}
+
+.question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  @include text-s;
+  cursor: pointer;
+  list-style: none;
+  transition: color 0.15s ease;
+
+  @include hover {
+    color: $navy;
+
+    .icon {
+      background: $green;
+      color: $navy;
+    }
+  }
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+.icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: $navy;
+  color: $white;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .item[open] & {
+    transform: rotate(180deg);
+  }
+}
+
+.answer {
+  margin-top: 12px;
+  color: $grey;
+}
